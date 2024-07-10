@@ -1,0 +1,49 @@
+amf:
+  addr: mb-amf.5g-mag.org
+  n2_bind_addr: gNB_IP
+  n3_bind_addr: gNB_IP
+
+gnb_id: 1
+
+slicing:
+  - sst: 1
+    sd: 1
+
+ru_sdr:
+  device_driver: zmq
+  device_args: tx_port=tcp://gNB_IP:2000,rx_port=tcp://UE_IP:2001,base_srate=23.04e6
+  srate: 23.04
+  tx_gain: 75
+  rx_gain: 75
+
+cell_cfg:
+  dl_arfcn: 368500
+  band: 3
+  channel_bandwidth_MHz: 20
+  common_scs: 15
+  plmn: "00101"
+  tac: 1
+  pci: 1
+  pdcch:
+    common:
+      ss0_index: 0
+      coreset0_index: 12
+    dedicated:
+      ss2_type: common
+      dci_format_0_1_and_1_1: false
+  prach:
+    prach_config_index: 1
+
+cu_cp:
+  inactivity_timer: 7200
+
+log:
+  filename: /tmp/mb-gnb.log
+  all_level: info
+  hex_max_size: 0
+
+pcap:
+  mac_enable: false
+  mac_filename: /tmp/mb-gnb_mac.pcap
+  ngap_enable: false
+  ngap_filename: /tmp/mb-gnb_ngap.pcap
