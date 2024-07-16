@@ -14,6 +14,32 @@ This repository uses Docker Compose to deploy a 5G-MBS capable 5G Core with a gN
 
 The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally using the steps on the `Build it` section.
 
+To use it, select the deployment and from the top level directory of the repository run:
+```bash
+# to use the internal deployment
+docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env up -d
+```
+
+```bash
+# to tear down the internal deployment
+docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env down
+```
+
+<details>
+<summary>Build it</summary>
+
+> Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
+
+From the top level directory of the repository run:
+```bash
+docker buildx bake
+```
+
+</details>
+
+<details>
+<summary>Details about the MBS components</summary>
+
 Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.1`.
 
 | Network Function | image name          | version |
@@ -39,25 +65,4 @@ Most of the components being developed for MBS, are named starting with `mb-` an
 
 Those components are being developed in the [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
 
-<details>
-<summary>Build it</summary>
-
-> Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
-
-From the top level directory of the repository run:
-```bash
-docker buildx bake
-```
-
 </details>
-
-To use it, select the deployment and from the top level directory of the repository run:
-```bash
-# to use the internal deployment
-docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env up -d
-```
-
-```bash
-# to tear down the internal deployment
-docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env down
-```
