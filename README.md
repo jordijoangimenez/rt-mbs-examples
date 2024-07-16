@@ -12,7 +12,32 @@ This repository uses Docker Compose to deploy a 5G-MBS capable 5G Core with a gN
 
 ## Usage
 
-The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally.
+The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally using the steps on the `Build it` section.
+
+Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.1`.
+
+| Network Function | image name          | version |
+| ---              | ---                 | ---     |
+| AUSF             | ghcr.io/5g-mag/ausf | v2.7.1  |
+| BSF              | ghcr.io/5g-mag/bsf  | v2.7.1  |
+| NRF              | ghcr.io/5g-mag/nrf  | v2.7.1  |
+| NSSF             | ghcr.io/5g-mag/nssf | v2.7.1  |
+| PCF              | ghcr.io/5g-mag/pcf  | v2.7.1  |
+| UDM              | ghcr.io/5g-mag/udm  | v2.7.1  |
+| UDR              | ghcr.io/5g-mag/udr  | v2.7.1  |
+
+Most of the components being developed for MBS, are named starting with `mb-` and the latest version available is the `0.1.0`.
+
+| Network Function | image name             | version |
+| ---              | ---                    | ---     |
+| AMF              | ghcr.io/5g-mag/mb-amf  | 0.1.0   |
+| MB-SMF           | ghcr.io/5g-mag/mb-smf  | 0.1.0   |
+| MB-UPF           | ghcr.io/5g-mag/mb-upf  | 0.1.0   |
+| AF               | ghcr.io/5g-mag/af      | 0.1.0   |
+| gNB              | ghcr.io/5g-mag/mb-gnb  | 0.1.0   |
+| UE               | ghcr.io/5g-mag/mb-ue   | 0.1.0   |
+
+Those components are being developed in the [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
 
 <details>
 <summary>Build it</summary>
