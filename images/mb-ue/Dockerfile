@@ -28,6 +28,9 @@ RUN ldconfig
 COPY ./helper_functions.sh /usr/local/bin/helper_functions.sh
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 
+# output logs to stdout
+RUN ln -sf /dev/stdout /tmp/mb-ue.log
+
 ENTRYPOINT [ "entrypoint.sh" ]
 
 # use CMD to provide arguments to ENTRYPOINT (can be overridden by user)
