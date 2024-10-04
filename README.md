@@ -26,12 +26,12 @@ Most of the components being developed for MBS, are named starting with `mb-` an
 
 | Network Function | image name             | version |
 | ---              | ---                    | ---     |
-| AMF              | ghcr.io/5g-mag/mb-amf  | 0.1.0   |
-| MB-SMF           | ghcr.io/5g-mag/mb-smf  | 0.1.0   |
-| MB-UPF           | ghcr.io/5g-mag/mb-upf  | 0.1.0   |
-| AF               | ghcr.io/5g-mag/af      | 0.1.0   |
-| gNB              | ghcr.io/5g-mag/mb-gnb  | 0.1.0   |
-| UE               | ghcr.io/5g-mag/mb-ue   | 0.1.0   |
+| AMF (with Rel-17 MBS features)              | ghcr.io/5g-mag/amf_with_mbs  | 0.1.0   |
+| SMF + MB-SMF           | ghcr.io/5g-mag/smf_mb-smf  | 0.1.0   |
+| UPF + MB-UPF           | ghcr.io/5g-mag/upf_mb-upf  | 0.1.0   |
+| Test MBS AF/AS               | ghcr.io/5g-mag/test_mbs_af_as      | 0.1.0   |
+| gNB (with Rel-17 MBS features)              | ghcr.io/5g-mag/gnb_with_mbs  | 0.1.0   |
+| UE (with Rel-17 MBS features)               | ghcr.io/5g-mag/ue_with_mbs   | 0.1.0   |
 
 Those components are being developed in the [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
 
