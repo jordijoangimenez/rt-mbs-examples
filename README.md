@@ -6,39 +6,7 @@
 
 ## Introduction
 
-Here you will find an easy way to try the current Multicast Broadcast Services (MBS) MVP being developed by the [iTEAM Mobile Communications Group](https://github.com/iTEAM-MCG) as part of the [5G-MAG](https://github.com/5G-MAG), following the 3GPP Release 17 specifications.
-
-This repository uses Docker Compose to deploy a 5G-MBS capable 5G Core with a gNB and UE using Docker images.
-
-## Usage
-
-The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally using the steps on the `Build it` section.
-
-To use it, select the deployment and from the top level directory of the repository run:
-```bash
-# to use the internal deployment
-docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env up -d
-```
-
-```bash
-# to tear down the internal deployment
-docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env down
-```
-
-<details>
-<summary>Build it</summary>
-
-> Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
-
-From the top level directory of the repository run:
-```bash
-docker buildx bake
-```
-
-</details>
-
-<details>
-<summary>Details about the MBS components</summary>
+This repository contains Docker Compose components to deploy several network functions related to MBS.
 
 Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.1`.
 
@@ -65,4 +33,26 @@ Most of the components being developed for MBS, are named starting with `mb-` an
 
 Those components are being developed in the [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
 
-</details>
+## Building
+
+> Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
+
+From the top level directory of the repository run:
+```bash
+docker buildx bake
+```
+
+## Running
+
+The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally using the steps on the `Build it` section.
+
+To use it, select the deployment and from the top level directory of the repository run:
+```bash
+# to use the internal deployment
+docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env up -d
+```
+
+```bash
+# to tear down the internal deployment
+docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env down
+```
