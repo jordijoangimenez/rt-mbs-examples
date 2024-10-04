@@ -35,6 +35,8 @@ Those components are being developed in the [Open5GS](https://github.com/5G-MAG/
 
 ## Building
 
+The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally using the steps on the `Build it` section.
+
 > Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
 
 From the top level directory of the repository run:
@@ -44,9 +46,7 @@ docker buildx bake
 
 ## Running
 
-The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally using the steps on the `Build it` section.
-
-To use it, select the deployment and from the top level directory of the repository run:
+To run the Docker images, select the deployment and from the top level directory of the repository run:
 ```bash
 # to use the internal deployment
 docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env up -d
