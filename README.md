@@ -8,6 +8,8 @@
 
 This repository contains Docker Compose components to deploy several network functions related to MBS.
 
+The detailed usage instructions are available at the [Getting Started guides](https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/).
+
 Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.1`.
 
 | Network Function | image name          | version |
