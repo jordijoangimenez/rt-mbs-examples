@@ -27,20 +27,20 @@ function get_config_file_path_from_docker_cmd(){
 function setup_config_file(){
     # grab the gNB container IP address, wait for container to be ready
     while [ -z "${gnb_ip_addr}" ]; do
-    gnb_ip_addr=$(dig +short "${GNB_FQDN}")
-    sleep 0.2
+        gnb_ip_addr=$(dig +short "${GNB_FQDN}")
+        sleep 0.2
     done
 
     # grab the UE container IP address, wait for container to be ready
     while [ -z "${ue_ip_addr}" ]; do
-    ue_ip_addr=$(dig +short "${UE_FQDN}")
-    sleep 0.2
+        ue_ip_addr=$(dig +short "${UE_FQDN}")
+        sleep 0.2
     done
 
     # docker_cmd is "${@}"
     gnb_config_file_path="$(get_config_file_path_from_docker_cmd "${@}")"
 
-    gnb_mod_config_file_path="/etc/rt-srsRAN_Project/custom/mod_mb-gnb.yaml"
+    gnb_mod_config_file_path="/etc/rt-srsRAN_Project/custom/mod_gnb_with_mbs.yaml"
 
     cp "${gnb_config_file_path}" "${gnb_mod_config_file_path}"
 

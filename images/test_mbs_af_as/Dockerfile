@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM ubuntu:jammy
+# global build-time arguments for FROM statements
+ARG UBUNTU_VERSION="jammy"
+
+FROM ubuntu:${UBUNTU_VERSION}
 
 # build-time arguments
 ARG DEBIAN_FRONTEND="noninteractive"
@@ -15,6 +18,6 @@ COPY ./test/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # copy entrypoint scripts
-COPY ./images/af/entrypoint.sh /entrypoint.sh
+COPY ./images/test_mbs_af_as/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]

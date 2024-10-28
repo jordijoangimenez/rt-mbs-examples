@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # global build-time arguments for FROM statements
-ARG FIVEG_MAG_MBS_VERSION="0.1.0"
+ARG FIVEG_MAG_MBS_VERSION="0.1.1"
 ARG UBUNTU_VERSION="jammy"
 
 FROM base-mbs-srsran-project:${FIVEG_MAG_MBS_VERSION} AS builder
@@ -27,7 +27,7 @@ COPY ./helper_functions.sh /usr/local/bin/helper_functions.sh
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # output logs to stdout
-RUN ln -sf /dev/stdout /tmp/mb-gnb.log
+RUN ln -sf /dev/stdout /tmp/gnb_with_mbs.log
 
 ENTRYPOINT [ "entrypoint.sh" ]
 

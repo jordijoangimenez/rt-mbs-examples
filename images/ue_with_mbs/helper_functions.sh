@@ -7,20 +7,20 @@
 function setup_config_file(){
     # grab the UE container IP address, wait for container to be ready
     while [ -z "${ue_ip_addr}" ]; do
-    ue_ip_addr=$(dig +short "${UE_FQDN}")
-    sleep 0.2
+        ue_ip_addr=$(dig +short "${UE_FQDN}")
+        sleep 0.2
     done
 
     # grab the gNB container IP address, wait for container to be ready
     while [ -z "${gnb_ip_addr}" ]; do
-    gnb_ip_addr=$(dig +short "${GNB_FQDN}")
-    sleep 0.2
+        gnb_ip_addr=$(dig +short "${GNB_FQDN}")
+        sleep 0.2
     done
 
     # docker_cmd is "${@}"
     ue_config_file_path="${@}"
 
-    ue_mod_config_file_path="/etc/srsRAN_4G/custom/mod_mb-ue.conf"
+    ue_mod_config_file_path="/etc/srsRAN_4G/custom/mod_ue_with_mbs.conf"
 
     cp "${ue_config_file_path}" "${ue_mod_config_file_path}"
 

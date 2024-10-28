@@ -129,99 +129,99 @@ services:
     ports:
       - "0.0.0.0:9999:9999/tcp"
 
-  mb-amf:
-    container_name: mb-amf
-    image: "ghcr.io/5g-mag/mb-amf:${FIVEG_MAG_MBS_VERSION}"
-    command: "-c /etc/open5gs/custom/mb-amf.yaml"
+  amf_with_mbs:
+    container_name: amf_with_mbs
+    image: "ghcr.io/5g-mag/amf_with_mbs:${FIVEG_MAG_MBS_VERSION}"
+    command: "-c /etc/open5gs/custom/amf_with_mbs.yaml"
     networks:
       5g-mag:
         aliases:
-          - mb-amf.5g-mag.org
+          - amf-with-mbs.5g-mag.org
     configs:
-      - source: mb_amf_config
-        target: /etc/open5gs/custom/mb-amf.yaml
+      - source: amf_with_mbs_config
+        target: /etc/open5gs/custom/amf_with_mbs.yaml
     depends_on:
       - nrf
 
-  mb-smf:
-    container_name: mb-smf
-    image: "ghcr.io/5g-mag/mb-smf:${FIVEG_MAG_MBS_VERSION}"
-    command: "-c /etc/open5gs/custom/mb-smf.yaml"
+  smf_mb-smf:
+    container_name: smf_mb-smf
+    image: "ghcr.io/5g-mag/smf_mb-smf:${FIVEG_MAG_MBS_VERSION}"
+    command: "-c /etc/open5gs/custom/smf_mb-smf.yaml"
     networks:
       5g-mag:
         aliases:
-          - mb-smf.5g-mag.org
+          - smf-mb-smf.5g-mag.org
     configs:
-      - source: mb_smf_config
-        target: /etc/open5gs/custom/mb-smf.yaml
+      - source: smf_mb-smf_config
+        target: /etc/open5gs/custom/smf_mb-smf.yaml
     depends_on:
       - nrf
-      - mb-upf
+      - upf_mb-upf
 
-  mb-upf:
-    container_name: mb-upf
-    image: "ghcr.io/5g-mag/mb-upf:${FIVEG_MAG_MBS_VERSION}"
-    command: "-c /etc/open5gs/custom/mb-upf.yaml"
+  upf_mb-upf:
+    container_name: upf_mb-upf
+    image: "ghcr.io/5g-mag/upf_mb-upf:${FIVEG_MAG_MBS_VERSION}"
+    command: "-c /etc/open5gs/custom/upf_mb-upf.yaml"
     networks:
       5g-mag:
         aliases:
-          - mb-upf.5g-mag.org
+          - upf-mb-upf.5g-mag.org
     configs:
-      - source: mb_upf_config
-        target: /etc/open5gs/custom/mb-upf.yaml
+      - source: upf_mb-upf_config
+        target: /etc/open5gs/custom/upf_mb-upf.yaml
     privileged: true
     cap_add:
       - NET_ADMIN
 
-  af:
-    container_name: af
-    image: "ghcr.io/5g-mag/af:${FIVEG_MAG_MBS_VERSION}"
+  test_mbs_af_as:
+    container_name: test_mbs_af_as
+    image: "ghcr.io/5g-mag/test_mbs_af_as:${FIVEG_MAG_MBS_VERSION}"
     networks:
       5g-mag:
         aliases:
-          - af.5g-mag.org
+          - test-mbs-af-as.5g-mag.org
     volumes:
       - ../../test:/test:ro
 
-  mb-gnb:
-    container_name: mb-gnb
-    image: "ghcr.io/5g-mag/mb-gnb:${FIVEG_MAG_MBS_VERSION}"
+  gnb_with_mbs:
+    container_name: gnb_with_mbs
+    image: "ghcr.io/5g-mag/gnb_with_mbs:${FIVEG_MAG_MBS_VERSION}"
     environment:
-      - GNB_FQDN=mb-gnb.5g-mag.org
-      - UE_FQDN=mb-ue.5g-mag.org
-    command: "-c /etc/rt-srsRAN_Project/custom/mb-gnb.yaml"
+      - GNB_FQDN=gnb-with-mbs.5g-mag.org
+      - UE_FQDN=ue-with-mbs.5g-mag.org
+    command: "-c /etc/rt-srsRAN_Project/custom/gnb_with_mbs.yaml"
     networks:
       5g-mag:
         aliases:
-          - mb-gnb.5g-mag.org
+          - gnb-with-mbs.5g-mag.org
     configs:
-      - source: mb_gnb_config
-        target: /etc/rt-srsRAN_Project/custom/mb-gnb.yaml
+      - source: gnb_with_mbs_config
+        target: /etc/rt-srsRAN_Project/custom/gnb_with_mbs.yaml
     privileged: true
     cap_add:
       - NET_ADMIN
     depends_on:
-      - mb-amf
+      - amf_with_mbs
 
-  mb-ue:
-    container_name: mb-ue
-    image: "ghcr.io/5g-mag/mb-ue:${FIVEG_MAG_MBS_VERSION}"
+  ue_with_mbs:
+    container_name: ue_with_mbs
+    image: "ghcr.io/5g-mag/ue_with_mbs:${FIVEG_MAG_MBS_VERSION}"
     environment:
-      - UE_FQDN=mb-ue.5g-mag.org
-      - GNB_FQDN=mb-gnb.5g-mag.org
-    command: "/etc/srsRAN_4G/custom/mb-ue.conf"
+      - UE_FQDN=ue-with-mbs.5g-mag.org
+      - GNB_FQDN=gnb-with-mbs.5g-mag.org
+    command: "/etc/srsRAN_4G/custom/ue_with_mbs.conf"
     networks:
       5g-mag:
         aliases:
-          - mb-ue.5g-mag.org
+          - ue-with-mbs.5g-mag.org
     configs:
-      - source: mb_ue_config
-        target: /etc/srsRAN_4G/custom/mb-ue.conf
+      - source: ue_with_mbs_config
+        target: /etc/srsRAN_4G/custom/ue_with_mbs.conf
     privileged: true
     cap_add:
       - NET_ADMIN
     depends_on:
-      - mb-gnb
+      - gnb_with_mbs
 
 networks:
   5g-mag:
@@ -258,13 +258,13 @@ configs:
     file: ../../configs/internal/bsf.yaml
   pcf_config:
     file: ../../configs/internal/pcf.yaml
-  mb_amf_config:
-    file: ../../configs/internal/mb-amf.yaml
-  mb_smf_config:
-    file: ../../configs/internal/mb-smf.yaml
-  mb_upf_config:
-    file: ../../configs/internal/mb-upf.yaml
-  mb_gnb_config:
-    file: ../../configs/internal/mb-gnb.yaml
-  mb_ue_config:
-    file: ../../configs/internal/mb-ue.conf
+  amf_with_mbs_config:
+    file: ../../configs/internal/amf_with_mbs.yaml
+  smf_mb-smf_config:
+    file: ../../configs/internal/smf_mb-smf.yaml
+  upf_mb-upf_config:
+    file: ../../configs/internal/upf_mb-upf.yaml
+  gnb_with_mbs_config:
+    file: ../../configs/internal/gnb_with_mbs.yaml
+  ue_with_mbs_config:
+    file: ../../configs/internal/ue_with_mbs.conf

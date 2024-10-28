@@ -1,5 +1,5 @@
 amf:
-  addr: mb-amf.5g-mag.org
+  addr: amf-with-mbs.5g-mag.org
   n2_bind_addr: gNB_IP
   n3_bind_addr: gNB_IP
 
@@ -38,12 +38,12 @@ cu_cp:
   inactivity_timer: 7200
 
 log:
-  filename: /tmp/mb-gnb.log
+  filename: /tmp/gnb_with_mbs.log
   all_level: info
   hex_max_size: 0
 
 pcap:
   mac_enable: false
-  mac_filename: /tmp/mb-gnb_mac.pcap
+  mac_filename: /tmp/gnb_with_mbs_mac.pcap
   ngap_enable: false
-  ngap_filename: /tmp/mb-gnb_ngap.pcap
+  ngap_filename: /tmp/gnb_with_mbs_ngap.pcap

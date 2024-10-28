@@ -1,20 +1,20 @@
 logger:
   file:
-    path: /var/log/open5gs/mb-amf.log
+    path: /var/log/open5gs/amf-with-mbs.log
 
 global:
 
 amf:
   sbi:
     server:
-      - address: mb-amf.5g-mag.org
+      - address: amf-with-mbs.5g-mag.org
         port: 80
     client:
       nrf:
         - uri: http://nrf.5g-mag.org:80
   ngap:
     server:
-      - address: mb-amf.5g-mag.org
+      - address: amf-with-mbs.5g-mag.org
   guami:
     - plmn_id:
         mcc: 001
@@ -39,7 +39,7 @@ amf:
       ciphering_order : [ NEA0, NEA1, NEA2 ]
   network_name:
     full: 5G-MAG MBS
-  amf_name: 5g-mag-mb-amf0
+  amf_name: 5g-mag-amf-with-mbs-0
   time:
     t3512:
       value: 540

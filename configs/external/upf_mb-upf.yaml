@@ -1,17 +1,17 @@
 logger:
   file:
-    path: /var/log/open5gs/mb-upf.log
+    path: /var/log/open5gs/upf_mb-upf.log
 
 global:
 
 upf:
   pfcp:
     server:
-      - address: mb-upf.5g-mag.org
+      - address: upf-mb-upf.5g-mag.org
     client:
   gtpu:
     server:
-      - address: mb-upf.5g-mag.org
+      - address: upf-mb-upf.5g-mag.org
         advertise: docker-host.external-ip
   session:
     - subnet: 10.45.0.0/16

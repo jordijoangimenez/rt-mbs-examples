@@ -1,26 +1,26 @@
 logger:
   file:
-    path: /var/log/open5gs/mb-smf.log
+    path: /var/log/open5gs/smf_mb-smf.log
 
 global:
 
 smf:
   sbi:
     server:
-      - address: mb-smf.5g-mag.org
+      - address: smf-mb-smf.5g-mag.org
         port: 80
     client:
       nrf:
         - uri: http://nrf.5g-mag.org:80
   pfcp:
     server:
-      - address: mb-smf.5g-mag.org
+      - address: smf-mb-smf.5g-mag.org
     client:
       upf:
-        - address: mb-upf.5g-mag.org
+        - address: upf-mb-upf.5g-mag.org
   gtpu:
     server:
-      - address: mb-smf.5g-mag.org
+      - address: smf-mb-smf.5g-mag.org
   session:
     - subnet: 10.45.0.0/16
       gateway: 10.45.0.1
