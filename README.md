@@ -10,30 +10,30 @@ This repository contains Docker Compose components to deploy several network fun
 
 The detailed usage instructions are available at the [Getting Started guides](https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/usage/docker-implementation.html).
 
-Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.1`.
+Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.2`.
 
 | Network Function | image name          | version |
 | ---              | ---                 | ---     |
-| AUSF             | ghcr.io/5g-mag/ausf | v2.7.1  |
-| BSF              | ghcr.io/5g-mag/bsf  | v2.7.1  |
-| NRF              | ghcr.io/5g-mag/nrf  | v2.7.1  |
-| NSSF             | ghcr.io/5g-mag/nssf | v2.7.1  |
-| PCF              | ghcr.io/5g-mag/pcf  | v2.7.1  |
-| UDM              | ghcr.io/5g-mag/udm  | v2.7.1  |
-| UDR              | ghcr.io/5g-mag/udr  | v2.7.1  |
+| AUSF             | ghcr.io/5g-mag/ausf | v2.7.2  |
+| BSF              | ghcr.io/5g-mag/bsf  | v2.7.2  |
+| NRF              | ghcr.io/5g-mag/nrf  | v2.7.2  |
+| NSSF             | ghcr.io/5g-mag/nssf | v2.7.2  |
+| PCF              | ghcr.io/5g-mag/pcf  | v2.7.2  |
+| UDM              | ghcr.io/5g-mag/udm  | v2.7.2  |
+| UDR              | ghcr.io/5g-mag/udr  | v2.7.2  |
 
-Most of the components being developed for MBS, are named starting with `mb-` and the latest version available is the `0.1.0`.
+The following components are being developed for MBS and the latest version available is the `0.1.1`.
 
-| Network Function | image name             | version |
-| ---              | ---                    | ---     |
-| AMF (with Rel-17 MBS features)              | ghcr.io/5g-mag/amf_with_mbs  | 0.1.0   |
-| SMF + MB-SMF           | ghcr.io/5g-mag/smf_mb-smf  | 0.1.0   |
-| UPF + MB-UPF           | ghcr.io/5g-mag/upf_mb-upf  | 0.1.0   |
-| Test MBS AF/AS               | ghcr.io/5g-mag/test_mbs_af_as      | 0.1.0   |
-| gNB (with Rel-17 MBS features)              | ghcr.io/5g-mag/gnb_with_mbs  | 0.1.0   |
-| UE (with Rel-17 MBS features)               | ghcr.io/5g-mag/ue_with_mbs   | 0.1.0   |
+| Network Function               | image name                     | version |
+| ---                            | ---                            | ---     |
+| AMF (with Rel-17 MBS features) | ghcr.io/5g-mag/amf_with_mbs    | 0.1.1   |
+| SMF + MB-SMF                   | ghcr.io/5g-mag/smf_mb-smf      | 0.1.1   |
+| UPF + MB-UPF                   | ghcr.io/5g-mag/upf_mb-upf      | 0.1.1   |
+| Test MBS AF/AS                 | ghcr.io/5g-mag/test_mbs_af_as  | 0.1.1   |
+| gNB (with Rel-17 MBS features) | ghcr.io/5g-mag/gnb_with_mbs    | 0.1.1   |
+| UE (with Rel-17 MBS features)  | ghcr.io/5g-mag/ue_with_mbs     | 0.1.1   |
 
-Those components are being developed in the [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
+Those components are being developed using [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
 
 ## Building
 
@@ -47,6 +47,8 @@ docker buildx bake
 ```
 
 ## Running
+
+First modify the `.env` file. Change the `DOCKER_HOST_IP=<your_host_ip_address>` with your machine's IP address, like this `DOCKER_HOST_IP=192.168.1.2`. This lets the UPF + MB-UPF use your machine's Internet connection to route the traffic using NAT.
 
 To run the Docker images, select the deployment and from the top level directory of the repository run:
 ```bash
