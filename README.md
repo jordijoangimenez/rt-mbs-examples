@@ -72,6 +72,7 @@ You can also build them locally using the steps on the `Build it` section.
 
 From the top level directory of the repository run:
 ```bash
+cd rt-mbs-examples
 docker buildx bake
 ```
 
