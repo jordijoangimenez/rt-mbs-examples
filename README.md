@@ -45,28 +45,18 @@ sudo apt install docker docker-buildx docker-compose-v2
 
 ## Downloading
 
-The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry and can be pulled with Docker (`docker pull ghcr.io/NAMESPACE/IMAGE_NAME`). Please check the version.
-
-```
-docker pull ghcr.io/5g-mag/amf_with_mbs:0.1.1
-docker pull ghcr.io/5g-mag/smf_mb-smf:0.1.1
-docker pull ghcr.io/5g-mag/upf_mb-upf:0.1.1
-docker pull ghcr.io/5g-mag/test_mbs_af_as:0.1.1
-docker pull ghcr.io/5g-mag/gnb_with_mbs:0.1.1
-docker pull ghcr.io/5g-mag/ue_with_mbs:0.1.1
-
-```
-
-The docker images can also be obtained by cloning the repository.
+The MBS Docker images can be obtained:
+* From the 5G-MAG's GitHub Container Registry and pulled with Docker (`docker pull ghcr.io/NAMESPACE/IMAGE_NAME`). This step is not needed if you run Docker compose as per the "Running" section below.
+* The docker images can also be obtained by cloning the repository.
 
 ```
 cd ~
-git clone --recurse-submodules https://github.com/5G-MAG/rt-mbs.examples.git
+git clone --recurse-submodules https://github.com/5G-MAG/rt-mbs-examples.git
 ```
 
 ## Building
 
-You can skip this step if you have downloaded the images. If not, you can also build them locally.
+You can skip this step if you decide to download the images rather than cloning the repository.
 
 > Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
 
