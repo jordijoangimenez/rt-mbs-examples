@@ -6,10 +6,13 @@
 
 ## Introduction
 
+3GPP Release 17 brings Multicast–Broadcast Services (MBS) to the 5G System, based on 5G Core and New Radio. MBS allows the network to select the most suitable among point-to-multipoint (PTM) or point-to-point (PTP) delivery based on requirements set by either service providers or network operators and/or taking into account concurrent user demand.
+
+Additional information can be found at: https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/
+
+### About the implementation
 This repository contains Docker Compose components to deploy several network functions related to MBS.
-
 The detailed usage instructions are available at the [Getting Started guides](https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/usage/docker-implementation.html).
-
 Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.2`.
 
 | Network Function | image name          | version |
@@ -35,9 +38,35 @@ The following components are being developed for MBS and the latest version avai
 
 Those components are being developed using [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
 
+## Install dependencies
+```
+sudo apt install docker docker-buildx
+```
+
+## Downloading
+
+The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry and can be pulled with Docker (`docker pull ghcr.io/NAMESPACE/IMAGE_NAME`). Please check the version.
+
+```
+docker pull ghcr.io/5g-mag/amf_with_mbs:0.1.1
+docker pull ghcr.io/5g-mag/smf_mb-smf:0.1.1
+docker pull ghcr.io/5g-mag/upf_mb-upf:0.1.1
+docker pull ghcr.io/5g-mag/test_mbs_af_as:0.1.1
+docker pull ghcr.io/5g-mag/gnb_with_mbs:0.1.1
+docker pull ghcr.io/5g-mag/ue_with_mbs:0.1.1
+
+```
+
+The docker images can also be obtained by cloning the repository.
+
+```
+cd ~
+git clone --recurse-submodules https://github.com/5G-MAG/rt-mbs.examples.git
+```
+
 ## Building
 
-The MBS Docker images are hosted on the 5G-MAG's GitHub Container Registry. You can also build them locally using the steps on the `Build it` section.
+You can also build them locally using the steps on the `Build it` section.
 
 > Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
 
