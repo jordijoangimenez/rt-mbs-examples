@@ -40,7 +40,7 @@ Those components are being developed using [Open5GS](https://github.com/5G-MAG/o
 
 ## Install dependencies
 ```
-sudo apt install docker docker-buildx
+sudo apt install docker docker-buildx docker-compose-v2
 ```
 
 ## Downloading
