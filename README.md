@@ -66,7 +66,7 @@ git clone --recurse-submodules https://github.com/5G-MAG/rt-mbs.examples.git
 
 ## Building
 
-You can also build them locally using the steps on the `Build it` section.
+You can skip this step if you have downloaded the images. If not, you can also build them locally.
 
 > Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
 
