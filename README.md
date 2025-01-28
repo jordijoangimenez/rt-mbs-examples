@@ -11,8 +11,13 @@
 Additional information can be found at: https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/
 
 ### About the implementation
+
 This repository contains Docker Compose components to deploy several network functions related to MBS.
 The detailed usage instructions are available at the [Getting Started guides](https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/usage/docker-implementation.html).
+
+> [!NOTE]
+> Docker images available for `amd64/x86-64` and `arm64`
+
 Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's name and follow Open5GS' versioning, the latest version available is the `v2.7.2`.
 
 | Network Function | image name          | version |
@@ -36,12 +41,14 @@ The following components are being developed for MBS and the latest version avai
 | gNB (with Rel-17 MBS features) | ghcr.io/5g-mag/gnb_with_mbs    | 0.1.1   |
 | UE (with Rel-17 MBS features)  | ghcr.io/5g-mag/ue_with_mbs     | 0.1.1   |
 
-Those components are being developed using [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `upv-mbs` branch.
+Those components are being developed using [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `5mbs` branch.
+
+> [!TIP]
+> You can use the tag `latest` to download the latest version available
 
 ## Install dependencies
-```
-sudo apt install docker docker-buildx docker-compose-v2
-```
+
+Follow the [steps for your distribution](https://docs.docker.com/engine/install/) and install the docker buildx and docker compose plugins
 
 ## Downloading
 
@@ -49,21 +56,23 @@ The MBS Docker images can be obtained:
 * From the 5G-MAG's GitHub Container Registry and pulled with Docker (`docker pull ghcr.io/NAMESPACE/IMAGE_NAME`). This step is not needed if you run Docker compose as per the "Running" section below.
 * The docker images can also be obtained by cloning the repository.
 
-```
-cd ~
-git clone --recurse-submodules https://github.com/5G-MAG/rt-mbs-examples.git
+```bash
+  cd ~
+  git clone --recurse-submodules https://github.com/5G-MAG/rt-mbs-examples.git
 ```
 
 ## Building
 
 You can skip this step if you decide to download the images rather than cloning the repository.
 
-> Note: This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
+> [!NOTE]
+> This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
 
 From the top level directory of the repository run:
+
 ```bash
-cd rt-mbs-examples
-docker buildx bake
+  cd rt-mbs-examples
+  docker buildx bake
 ```
 
 ## Running
@@ -71,6 +80,7 @@ docker buildx bake
 First modify the `.env` file. Change the `DOCKER_HOST_IP=<your_host_ip_address>` with your machine's IP address, like this `DOCKER_HOST_IP=192.168.1.2`. This lets the UPF + MB-UPF use your machine's Internet connection to route the traffic using NAT.
 
 To run the Docker images, select the deployment and from the top level directory of the repository run:
+
 ```bash
 # to use the internal deployment
 docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env up -d
