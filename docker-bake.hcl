@@ -7,15 +7,15 @@ variable "GITHUB_REGISTRY" {
 }
 
 variable "OPEN5GS_BRANCH" {
-  default = "upv-mbs"
+  default = "5mbs"
 }
 
 variable "SRSRAN_PROJECT_BRANCH" {
-  default = "upv-mbs"
+  default = "5mbs"
 }
 
 variable "SRSRAN_4G_BRANCH" {
-  default = "upv-mbs"
+  default = "5mbs"
 }
 
 variable "UBUNTU_VERSION" {
@@ -30,24 +30,40 @@ group "default" {
 }
 
 target "base-mbs-open5gs" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    OPEN5GS_BRANCH = "${OPEN5GS_BRANCH}"
+  }
   context = "./images/base-mbs-open5gs"
   tags = ["base-mbs-open5gs:${FIVEG_MAG_MBS_VERSION}"]
   output = ["type=image"]
 }
 
 target "base-mbs-srsran-project" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    SRSRAN_PROJECT_BRANCH = "${SRSRAN_PROJECT_BRANCH}"
+  }
   context = "./images/base-mbs-srsran-project"
   tags = ["base-mbs-srsran-project:${FIVEG_MAG_MBS_VERSION}"]
   output = ["type=image"]
 }
 
 target "base-mbs-srsran-4g" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    SRSRAN_4G_BRANCH = "${SRSRAN_4G_BRANCH}"
+  }
   context = "./images/base-mbs-srsran-4g"
   tags = ["base-mbs-srsran-4g:${FIVEG_MAG_MBS_VERSION}"]
   output = ["type=image"]
 }
 
 target "amf_with_mbs" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    FIVEG_MAG_MBS_VERSION = "${FIVEG_MAG_MBS_VERSION}"
+  }
   context = "./images/amf_with_mbs"
   contexts = {
     "base-mbs-open5gs:${FIVEG_MAG_MBS_VERSION}" = "target:base-mbs-open5gs"
@@ -57,6 +73,10 @@ target "amf_with_mbs" {
 }
 
 target "smf_mb-smf" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    FIVEG_MAG_MBS_VERSION = "${FIVEG_MAG_MBS_VERSION}"
+  }
   context = "./images/smf_mb-smf"
   contexts = {
     "base-mbs-open5gs:${FIVEG_MAG_MBS_VERSION}" = "target:base-mbs-open5gs"
@@ -66,6 +86,10 @@ target "smf_mb-smf" {
 }
 
 target "upf_mb-upf" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    FIVEG_MAG_MBS_VERSION = "${FIVEG_MAG_MBS_VERSION}"
+  }
   context = "./images/upf_mb-upf"
   contexts = {
     "base-mbs-open5gs:${FIVEG_MAG_MBS_VERSION}" = "target:base-mbs-open5gs"
@@ -75,6 +99,9 @@ target "upf_mb-upf" {
 }
 
 target "test_mbs_af_as" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+  }
   context = "."
   dockerfile = "./images/test_mbs_af_as/Dockerfile"
   tags = ["${GITHUB_REGISTRY}/test_mbs_af_as:${FIVEG_MAG_MBS_VERSION}"]
@@ -82,6 +109,10 @@ target "test_mbs_af_as" {
 }
 
 target "gnb_with_mbs" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    FIVEG_MAG_MBS_VERSION = "${FIVEG_MAG_MBS_VERSION}"
+  }
   context = "./images/gnb_with_mbs"
   contexts = {
     "base-mbs-srsran-project:${FIVEG_MAG_MBS_VERSION}" = "target:base-mbs-srsran-project"
@@ -91,6 +122,10 @@ target "gnb_with_mbs" {
 }
 
 target "ue_with_mbs" {
+  args = {
+    UBUNTU_VERSION = "${UBUNTU_VERSION}"
+    FIVEG_MAG_MBS_VERSION = "${FIVEG_MAG_MBS_VERSION}"
+  }
   context = "./images/ue_with_mbs"
   contexts = {
     "base-mbs-srsran-4g:${FIVEG_MAG_MBS_VERSION}" = "target:base-mbs-srsran-4g"
