@@ -72,7 +72,7 @@ class TMGIAllocateServiceOperation(unittest.TestCase):
         self.assertEqual(response_status, 200)
 
     def test_tmgi_refresh(self):
-        api_path = f"{api_url}{self.api_resource_uri}"
+        api_path = f"{api_base_uri}{self.api_resource_uri}"
 
         # avoid the ugly output when tests are run in verbose mode
         print("\n")
@@ -159,7 +159,7 @@ class TMGIDeallocateServiceOperation(unittest.TestCase):
     api_resource_uri = "/tmgi"
 
     def test_tmgi_deallocate(self):
-        api_path = f"{api_url}{self.api_resource_uri}"
+        api_path = f"{api_base_uri}{self.api_resource_uri}"
 
         # avoid the ugly output when tests are run in verbose mode
         print("\n")
