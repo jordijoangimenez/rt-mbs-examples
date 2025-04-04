@@ -13,7 +13,7 @@ Additional information can be found at: https://5g-mag.github.io/Getting-Started
 ### About the implementation
 
 This repository contains Docker Compose components to deploy several network functions related to MBS.
-The detailed usage instructions are available at the [Getting Started guides](https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/usage/docker-implementation.html).
+The detailed usage instructions are available at the [Getting Started guides](https://5g-mag.github.io/Getting-Started/pages/5g-multicast-broadcast-services/tutorials/mbs-in-5gc.html).
 
 > [!NOTE]
 > Docker images available for `amd64/x86-64` and `arm64`
@@ -30,21 +30,18 @@ Some of the components are unmodified Open5GS Network Functions, those are marke
 | UDM              | ghcr.io/5g-mag/udm  | v2.7.2  |
 | UDR              | ghcr.io/5g-mag/udr  | v2.7.2  |
 
-The following components are being developed for MBS and the latest version available is the `0.1.1`.
+The following components are being developed for MBS and the latest version available is the `0.1.2`.
 
 | Network Function               | image name                     | version |
 | ---                            | ---                            | ---     |
-| AMF (with Rel-17 MBS features) | ghcr.io/5g-mag/amf_with_mbs    | 0.1.1   |
-| SMF + MB-SMF                   | ghcr.io/5g-mag/smf_mb-smf      | 0.1.1   |
-| UPF + MB-UPF                   | ghcr.io/5g-mag/upf_mb-upf      | 0.1.1   |
-| Test MBS AF/AS                 | ghcr.io/5g-mag/test_mbs_af_as  | 0.1.1   |
-| gNB (with Rel-17 MBS features) | ghcr.io/5g-mag/gnb_with_mbs    | 0.1.1   |
-| UE (with Rel-17 MBS features)  | ghcr.io/5g-mag/ue_with_mbs     | 0.1.1   |
+| AMF (with Rel-17 MBS features) | ghcr.io/5g-mag/amf_with_mbs    | 0.1.2   |
+| SMF + MB-SMF                   | ghcr.io/5g-mag/smf_mb-smf      | 0.1.2   |
+| UPF + MB-UPF                   | ghcr.io/5g-mag/upf_mb-upf      | 0.1.2   |
+| Test MBS AF/AS                 | ghcr.io/5g-mag/test_mbs_af_as  | 0.1.2   |
+| gNB (with Rel-17 MBS features) | ghcr.io/5g-mag/gnb_with_mbs    | 0.1.2   |
+| UE (with Rel-17 MBS features)  | ghcr.io/5g-mag/ue_with_mbs     | 0.1.2   |
 
 Those components are being developed using [Open5GS](https://github.com/5G-MAG/open5gs) for the Network Functions AMF, MB-SMF and MB-UPF, [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) for the gNB and [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G) for the UE, using the `5mbs` branch.
-
-> [!TIP]
-> You can use the tag `latest` to download the latest version available
 
 ## Install dependencies
 
@@ -67,6 +64,9 @@ You can skip this step if you decide to download the images rather than cloning 
 
 > [!NOTE]
 > This method uses the `docker-bake.hcl` file and requires `docker-buildx-plugin`
+
+> [!IMPORTANT]
+> When building the images, modify the `.env` file to use the specific versions being used on the `FIVEG_MAG_MBS_VERSION` and `OPEN5GS_VERSION` variables.
 
 From the top level directory of the repository run:
 

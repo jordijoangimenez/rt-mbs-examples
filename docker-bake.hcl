@@ -1,5 +1,5 @@
 variable "FIVEG_MAG_MBS_VERSION" {
-  default = "0.1.1"
+  default = "0.1.2"
 }
 
 variable "GITHUB_REGISTRY" {
