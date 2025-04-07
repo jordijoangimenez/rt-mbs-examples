@@ -91,8 +91,10 @@ First modify the `.env` file. Change the `DOCKER_HOST_IP=<your_host_ip_address>`
 this `DOCKER_HOST_IP=192.168.1.2`. This lets the UPF + MB-UPF use your machine's Internet connection to route the
 traffic using NAT.
 
+To run the Docker images, select either the internal deployment or the external deployment and from the top level
+directory of the repository:
+
 ### Internal Deployment
-To run the Docker images, select the deployment and from the top level directory of the repository run:
 
 ```bash
 # to use the internal deployment
@@ -105,14 +107,15 @@ docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env dow
 ```
 
 ### External Deployment
+
 To run the Docker images, select the deployment and from the top level directory of the repository run:
 
 ```bash
-# to use the internal deployment
+# to use the external deployment
 docker compose -f compose-files/external/docker-compose.yaml --env-file=.env up -d
 ```
 
 ```bash
-# to tear down the internal deployment
+# to tear down the external deployment
 docker compose -f compose-files/external/docker-compose.yaml --env-file=.env down
 ```
