@@ -87,11 +87,15 @@ From the top level directory of the repository run:
 
 ## Running
 
+Two different deployments have been created to test this project, `internal` and `external`:
+- The `internal` deployment consists of an end-to-end setup consisting of a 5G Core with MBS features, a gNB and a UE. Everything ready to be tested on the *internal* network using only the components deployed.
+- The `external` deployment consists of only the 5G Core with MBS features. It is configured to accept connections of *external* gNBs.
+
 First modify the `.env` file. Change the `DOCKER_HOST_IP=<your_host_ip_address>` with your machine's IP address, like
 this `DOCKER_HOST_IP=192.168.1.2`. This lets the UPF + MB-UPF use your machine's Internet connection to route the
 traffic using NAT.
 
-To run the Docker images, select either the internal deployment or the external deployment and from the top level
+To run the Docker images, select either the `internal` deployment or the `external` deployment and from the top level
 directory of the repository:
 
 ### Internal Deployment
