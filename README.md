@@ -108,8 +108,6 @@ docker compose -f compose-files/internal/docker-compose.yaml --env-file=.env dow
 
 ### External Deployment
 
-To run the Docker images, select the deployment and from the top level directory of the repository run:
-
 ```bash
 # to use the external deployment
 docker compose -f compose-files/external/docker-compose.yaml --env-file=.env up -d
