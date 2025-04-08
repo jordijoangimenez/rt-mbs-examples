@@ -22,17 +22,17 @@ the [Getting Started guides](https://5g-mag.github.io/Getting-Started/pages/5g-m
 > Docker images are available for `amd64/x86-64` and `arm64` based systems.
 
 Some of the components are unmodified Open5GS Network Functions, those are marked with the regular Network Function's
-name and follow Open5GS' versioning, the latest version available is the `v2.7.2`.
+name and follow Open5GS' versioning, the latest version available is the `2.7.2`.
 
 | Network Function | image name          | version |
 |------------------|---------------------|---------|
-| AUSF             | ghcr.io/5g-mag/ausf | v2.7.2  |
-| BSF              | ghcr.io/5g-mag/bsf  | v2.7.2  |
-| NRF              | ghcr.io/5g-mag/nrf  | v2.7.2  |
-| NSSF             | ghcr.io/5g-mag/nssf | v2.7.2  |
-| PCF              | ghcr.io/5g-mag/pcf  | v2.7.2  |
-| UDM              | ghcr.io/5g-mag/udm  | v2.7.2  |
-| UDR              | ghcr.io/5g-mag/udr  | v2.7.2  |
+| AUSF             | ghcr.io/5g-mag/ausf | 2.7.2  |
+| BSF              | ghcr.io/5g-mag/bsf  | 2.7.2  |
+| NRF              | ghcr.io/5g-mag/nrf  | 2.7.2  |
+| NSSF             | ghcr.io/5g-mag/nssf | 2.7.2  |
+| PCF              | ghcr.io/5g-mag/pcf  | 2.7.2  |
+| UDM              | ghcr.io/5g-mag/udm  | 2.7.2  |
+| UDR              | ghcr.io/5g-mag/udr  | 2.7.2  |
 
 The following components are being developed for MBS and the latest version available is the `0.1.2`.
 
