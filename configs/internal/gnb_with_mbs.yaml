@@ -1,20 +1,18 @@
-amf:
-  addr: amf-with-mbs.5g-mag.org
-  n2_bind_addr: gNB_IP
-  n3_bind_addr: gNB_IP
-
 gnb_id: 1
 
-slicing:
-  - sst: 1
-    sd: 1
-
-ru_sdr:
-  device_driver: zmq
-  device_args: tx_port=tcp://gNB_IP:2000,rx_port=tcp://UE_IP:2001,base_srate=23.04e6
-  srate: 23.04
-  tx_gain: 75
-  rx_gain: 75
+cu_cp:
+  amf:
+    addr: amf-with-mbs.5g-mag.org
+    port: 38412
+    bind_addr: gNB_IP
+    supported_tracking_areas:
+      - tac: 1
+        plmn_list:
+          - plmn: "00101"
+            tai_slice_support_list:
+              - sst: 1
+                sd: 1
+  inactivity_timer: 7200
 
 cell_cfg:
   dl_arfcn: 368500
@@ -24,6 +22,9 @@ cell_cfg:
   plmn: "00101"
   tac: 1
   pci: 1
+  slicing:
+    - sst: 1
+      sd: 1
   pdcch:
     common:
       ss0_index: 0
@@ -33,9 +34,22 @@ cell_cfg:
       dci_format_0_1_and_1_1: false
   prach:
     prach_config_index: 1
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64
 
-cu_cp:
-  inactivity_timer: 7200
+ru_sdr:
+  device_driver: zmq
+  device_args: tx_port=tcp://gNB_IP:2000,rx_port=tcp://UE_IP:2001,base_srate=23.04e6
+  srate: 23.04
+  tx_gain: 75
+  rx_gain: 75
+
+expert_execution:
+  threads:
+    non_rt:
+      nof_non_rt_threads: 2
 
 log:
   filename: /tmp/gnb_with_mbs.log

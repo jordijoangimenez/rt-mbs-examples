@@ -182,6 +182,8 @@ services:
           - test-mbs-af-as.5g-mag.org
     volumes:
       - ../../test:/test:ro
+    cap_add:
+      - NET_ADMIN
 
   gnb_with_mbs:
     container_name: gnb_with_mbs

@@ -13,7 +13,7 @@ ARG DEBIAN_FRONTEND="noninteractive"
 
 # install dependencies
 RUN apt-get update && apt-get install libfftw3-dev libmbedtls-dev libboost-program-options-dev \
-    libzmq3-dev dnsutils -y
+    libzmq3-dev dnsutils iproute2 iputils-ping -y
 
 # copy executable, default config and libs
 COPY --from=builder /srsRAN_4G/build/srsue/src/srsue /usr/local/bin/srsue
