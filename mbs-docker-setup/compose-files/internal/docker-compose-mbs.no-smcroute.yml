@@ -1,0 +1,5 @@
+services:
+  upf_mb-upf:
+    entrypoint: ["/usr/local/bin/entrypoint-no-smcroute.sh"]
+    volumes:
+      - ./entrypoint-no-smcroute.sh:/usr/local/bin/entrypoint-no-smcroute.sh:ro
